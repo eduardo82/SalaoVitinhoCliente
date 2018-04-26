@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Salão do Vitinho</string>
+    <string name="agendamento_txt">Escolha uma opção:</string>
+    <string name="data_agendamento">Data Agendamento</string>
+    <string name="profissional">Profissional</string>
+    <string name="horarioAgendamento">Horário Disponível</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+</resources>
