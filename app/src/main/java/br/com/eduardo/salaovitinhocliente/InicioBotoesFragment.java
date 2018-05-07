@@ -65,6 +65,7 @@ public class InicioBotoesFragment extends Fragment {
         visualizarBotao = view.findViewById(R.id.visualizarBotao);
         mensagemBotao = view.findViewById(R.id.mensagemBotao);
         dadosCadastraisBotao= view.findViewById(R.id.dadosCadastraisBotao);
+        sairBotao = view.findViewById(R.id.sairBotao);
 
         trataAcaoClickBotoes();
 
@@ -105,5 +106,11 @@ public class InicioBotoesFragment extends Fragment {
             }
         });
 
+        sairBotao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((Activity) context).finishAffinity();
+            }
+        });
     }
 }
