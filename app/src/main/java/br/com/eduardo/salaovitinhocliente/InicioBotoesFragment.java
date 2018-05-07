@@ -78,16 +78,26 @@ public class InicioBotoesFragment extends Fragment {
         agendarBotao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragmentManager.beginTransaction().replace(R.id.conteudo,
-                        new AgendamentoFragment()).commit();
+                if (verificaDadosCadastraisOk()) {
+                    fragmentManager.beginTransaction().replace(R.id.conteudo,
+                            new AgendamentoFragment()).commit();
+                }
+                else {
+                    SalaoVitinhoClienteUtils.exibeDialogInformacoesUsuario(context, true, true);
+                }
             }
         });
 
         visualizarBotao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragmentManager.beginTransaction().replace(R.id.conteudo,
-                        new VisualizarAgendamentoFragment()).commit();
+                if (verificaDadosCadastraisOk()) {
+                    fragmentManager.beginTransaction().replace(R.id.conteudo,
+                            new VisualizarAgendamentoFragment()).commit();
+                }
+                else {
+                    SalaoVitinhoClienteUtils.exibeDialogInformacoesUsuario(context, true, true);
+                }
             }
         });
 
@@ -101,8 +111,13 @@ public class InicioBotoesFragment extends Fragment {
         mensagemBotao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragmentManager.beginTransaction().replace(R.id.conteudo,
-                        new MensagemFragment()).commit();
+                if (verificaDadosCadastraisOk()) {
+                    fragmentManager.beginTransaction().replace(R.id.conteudo,
+                            new MensagemFragment()).commit();
+                }
+                else {
+                    SalaoVitinhoClienteUtils.exibeDialogInformacoesUsuario(context, true, true);
+                }
             }
         });
 
@@ -112,5 +127,12 @@ public class InicioBotoesFragment extends Fragment {
                 ((Activity) context).finishAffinity();
             }
         });
+    }
+
+    private boolean verificaDadosCadastraisOk() {
+        String usuario = PreferencesUtils.getUsuario(context);
+        String telefone = PreferencesUtils.getTelefone(context);
+
+        return usuario.length() > 3 && telefone.length() > 8;
     }
 }
