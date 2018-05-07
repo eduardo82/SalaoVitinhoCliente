@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/agendarBotao"
+            style="@style/BotaoInicial"
+            android:background="@drawable/initial_button"
+            android:drawableTop="@drawable/image_agenda"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:paddingTop="70dp"
+            android:text="Agendar" />
+
+        <Button
+            android:id="@+id/visualizarBotao"
+            style="@style/BotaoInicial"
+            android:background="@drawable/initial_button"
+            android:drawableTop="@drawable/image_olho"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:paddingTop="70dp"
+            android:text="Visualizar" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <Button
+            android:id="@+id/dadosCadastraisBotao"
+            style="@style/BotaoInicial"
+            android:drawableTop="@drawable/image_cadastro"
+            android:background="@drawable/initial_button"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:text="Dados Cadastrais" />
+
+        <Button
+            android:id="@+id/mensagemBotao"
+            style="@style/BotaoInicial"
+            android:drawableTop="@drawable/image_mensagem"
+            android:background="@drawable/initial_button"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:text="Mensagem" />
+    </LinearLayout>
+
+</LinearLayout>

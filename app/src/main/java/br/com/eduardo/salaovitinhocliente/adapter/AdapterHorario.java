@@ -72,7 +72,7 @@ public class AdapterHorario extends ArrayAdapter<String> {
         String hora = getItem(position);
 
         Calendar horaAtualCalendar = Calendar.getInstance();
-        horaAtualCalendar.add(Calendar.HOUR, 1);
+        horaAtualCalendar.add(Calendar.MINUTE, 30);
 
         String hotaAtual = DateUtils.formatHora(horaAtualCalendar.getTime());
 

@@ -2,6 +2,7 @@ package br.com.eduardo.salaovitinhocliente;
 
 import android.app.Activity;
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -91,6 +92,9 @@ public class MainActivity extends AppCompatActivity
 
         auth = FirebaseAuth.getInstance();
 
+        getFragmentManager().beginTransaction().replace(R.id.conteudo,
+            new InicioBotoesFragment()).commit();
+
         if (auth.getCurrentUser() == null) {
             startActivityForResult(AuthUI.getInstance().createSignInIntentBuilder()
                 .setAvailableProviders(Arrays.asList(new AuthUI.IdpConfig.GoogleBuilder().build())).build(), RC_SIGN_IN);
@@ -144,9 +148,6 @@ public class MainActivity extends AppCompatActivity
                                         NotificacaoUtil.cancelaNotificacao(context, 1);
                                     }
                                 }
-
-                                getFragmentManager().beginTransaction().replace(R.id.conteudo,
-                                        new VisualizarAgendamentoFragment()).commit();
                             }
                             else {
                                 exibeDialogUsuarioNaoAutorizado();
@@ -414,5 +415,12 @@ public class MainActivity extends AppCompatActivity
             }
         };
         SalaoVitinhoClienteUtils.exibeDialogConfirmacao(activity, "Você não é autorizado a usar este aplicativo. Solicite ao Vitinho ou João Vitor a autorização.", acaoBotaoSim);
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.conteudo, new InicioBotoesFragment()).commit();
     }
 }
