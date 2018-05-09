@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CalendarView;
 
 import java.util.Calendar;
@@ -19,7 +18,6 @@ public class AgendamentoFragment extends Fragment {
     View view;
     Context context;
     CalendarView calendar;
-    Button proximoBtn;
     String dataEscolhida;
 
 
@@ -37,23 +35,14 @@ public class AgendamentoFragment extends Fragment {
         maxDate.add(Calendar.DAY_OF_MONTH, 7);
         calendar.setMaxDate(maxDate.getTimeInMillis());
 
-        proximoBtn = (Button) view.findViewById(R.id.proximoAgendamentoHoraBtn);
-        proximoBtn.setEnabled(false);
-
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 dataEscolhida = retornaValorMenorDez(dayOfMonth) + "/" + retornaValorMenorDez(month+1) + "/" + year;
-                proximoBtn.setEnabled(true);
-            }
-        });
-
-        proximoBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
                 selecionaData();
             }
         });
+
         return view;
     }
 

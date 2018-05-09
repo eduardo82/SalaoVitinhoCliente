@@ -12,19 +12,5 @@
         tools:layout_editor_absoluteX="-23dp"
         tools:layout_editor_absoluteY="-65dp" />
 
-    <RelativeLayout
-        android:id="@+id/relativeLayoutBotaEnviar"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-            <Button
-                android:id="@+id/proximoAgendamentoHoraBtn"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:textColor="#FFFFFF"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/round_button"
-                android:text="Próximo" />
-    </RelativeLayout>
+   
 </LinearLayout>
