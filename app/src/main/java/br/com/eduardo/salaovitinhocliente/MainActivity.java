@@ -148,6 +148,8 @@ public class MainActivity extends AppCompatActivity
                                         NotificacaoUtil.cancelaNotificacao(context, 1);
                                     }
                                 }
+
+                                verificaAutorizacaoServico();
                             }
                             else {
                                 exibeDialogUsuarioNaoAutorizado();
@@ -167,31 +169,6 @@ public class MainActivity extends AppCompatActivity
             else {
                 SalaoVitinhoClienteUtils.exibeDialogInformacoesUsuario(context, true, true);
             }
-        }
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        if (PreferencesUtils.getTelefone(this).length() > 8) {
-            FirebaseUtils.getReferenceChild(SalaoVitinhoConstants.NODE_FIREBASE_TELEFONES, PreferencesUtils.getTelefone(this)).addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    if (dataSnapshot != null && dataSnapshot.hasChildren()) {
-                        Telefone telefone = dataSnapshot.getValue(Telefone.class);
-
-                        if (telefone.getAutorizado()) {
-                            verificaAutorizacaoServico();
-                            verificaMensagem();
-                        }
-                    }
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
         }
     }
 
