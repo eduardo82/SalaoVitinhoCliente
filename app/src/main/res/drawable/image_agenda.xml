@@ -4,5 +4,6 @@
         android:id="@+id/half_overlay"
         android:drawable="@drawable/agenda"
         android:width="35dp"
-        android:height="35dp" />
+        android:height="35dp"
+        />
 </layer-list>
