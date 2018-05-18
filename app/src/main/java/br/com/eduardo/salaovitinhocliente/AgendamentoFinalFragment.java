@@ -236,8 +236,8 @@ public class AgendamentoFinalFragment extends Fragment {
             diaAgendamento.replace("/", "_")).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                horariosMarcados = new ArrayList<>();
                 if (dataSnapshot.hasChildren()) {
-                    horariosMarcados = new ArrayList<String>();
 
                     for (DataSnapshot diaAgendamento : dataSnapshot.getChildren()) {
                         Horario horario = diaAgendamento.getValue(Horario.class);
