@@ -290,4 +290,9 @@ public class AgendamentoFinalFragment extends Fragment {
         AgendamentoDB database = new AgendamentoDB(context);
         database.salvar(horario);
     }
+
+    private void apagaAgendamentoBanco(Horario horario) {
+        AgendamentoDB database = new AgendamentoDB(context);
+        database.deletar(horario);
+    }
 }
