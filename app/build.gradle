@@ -7,8 +7,8 @@ android {
         applicationId "br.com.eduardo.salaovitinhocliente"
         minSdkVersion 17
         targetSdkVersion 27
-        versionCode 13
-        versionName "11.2"
+        versionCode 16
+        versionName "11.5"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
