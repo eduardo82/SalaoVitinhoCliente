@@ -51,7 +51,6 @@ public class InicioBotoesFragment extends Fragment {
 
     private Button agendarBotao;
     private Button visualizarBotao;
-    private Button mensagemBotao;
     private Button dadosCadastraisBotao;
     private Button sairBotao;
 
@@ -63,7 +62,6 @@ public class InicioBotoesFragment extends Fragment {
 
         agendarBotao = view.findViewById(R.id.agendarBotao);
         visualizarBotao = view.findViewById(R.id.visualizarBotao);
-        mensagemBotao = view.findViewById(R.id.mensagemBotao);
         dadosCadastraisBotao= view.findViewById(R.id.dadosCadastraisBotao);
         sairBotao = view.findViewById(R.id.sairBotao);
 
@@ -105,19 +103,6 @@ public class InicioBotoesFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 SalaoVitinhoClienteUtils.exibeDialogInformacoesUsuario(context, true, true);
-            }
-        });
-
-        mensagemBotao.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (verificaDadosCadastraisOk()) {
-                    fragmentManager.beginTransaction().replace(R.id.conteudo,
-                            new MensagemFragment()).commit();
-                }
-                else {
-                    SalaoVitinhoClienteUtils.exibeDialogInformacoesUsuario(context, true, true);
-                }
             }
         });
 
