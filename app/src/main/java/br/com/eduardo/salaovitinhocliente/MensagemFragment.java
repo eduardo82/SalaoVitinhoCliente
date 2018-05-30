@@ -41,9 +41,9 @@ public class MensagemFragment extends Fragment {
 
         mensagemDB = new MensagemDB(context);
 
-        buttonChamaDetalheMensagem = (Button) view.findViewById(R.id.chamaDetalheMensagem);
-        mensagensClientesListView = (ListView) view.findViewById(R.id.listViewMensagens);
-        mensagensClientes = new ArrayList<Mensagem>();
+        buttonChamaDetalheMensagem = view.findViewById(R.id.chamaDetalheMensagem);
+        mensagensClientesListView = view.findViewById(R.id.listViewMensagens);
+        mensagensClientes = new ArrayList<>();
 
         mensagensClientesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -63,15 +63,6 @@ public class MensagemFragment extends Fragment {
                 mensagemDB.deletar();
             }
         };
-
-        /*mensagensClientesListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                mensagemLida = mensagensClientes.get(i);
-                SalaoVitinhoClienteUtils.exibeDialogConfirmacao(context, "Você deseja apagar a mensagem?", acaoBotaoSim, null);
-                return false;
-            }
-        });*/
 
         mensagensClientes = mensagemDB.buscaMensagem(null);
 

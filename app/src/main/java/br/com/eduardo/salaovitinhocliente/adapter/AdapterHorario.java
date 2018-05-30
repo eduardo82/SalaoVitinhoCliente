@@ -76,7 +76,7 @@ public class AdapterHorario extends ArrayAdapter<String> {
 
         String hotaAtual = DateUtils.formatHora(horaAtualCalendar.getTime());
 
-        if (dataAgendamento == null || horaAtualCalendar.get(Calendar.DAY_OF_MONTH) == (DateUtils.parseDia(dataAgendamento))) {
+        if (dataAgendamento != null && horaAtualCalendar.get(Calendar.DAY_OF_MONTH) == (DateUtils.parseDia(dataAgendamento))) {
             if (hora.compareTo(hotaAtual) < 0) {
                 checkedTextView.setClickable(false);
                 checkedTextView.setPressed(false);

@@ -39,10 +39,10 @@
         <Button
             android:id="@+id/dadosCadastraisBotao"
             style="@style/BotaoInicial"
-            android:drawableTop="@drawable/image_cadastro"
-            android:background="@drawable/initial_button"
             android:layout_width="0dp"
             android:layout_weight="0.5"
+            android:background="@drawable/initial_button"
+            android:drawableTop="@drawable/image_cadastro"
             android:text="Dados Cadastrais" />
 
         <Button

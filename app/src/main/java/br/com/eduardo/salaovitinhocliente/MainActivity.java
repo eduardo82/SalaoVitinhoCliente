@@ -126,7 +126,6 @@ public class MainActivity extends AppCompatActivity
             mensagemDB = new MensagemDB(context);
 
             if (numeroTelefoneUsuario != null && numeroTelefoneUsuario.length() > 8 && nomeUsuario != null && nomeUsuario.length() > 3) {
-
                 FirebaseUtils.getReferenceChild(SalaoVitinhoConstants.NODE_FIREBASE_TELEFONES, numeroTelefoneUsuario).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -261,9 +260,6 @@ public class MainActivity extends AppCompatActivity
                             } else if (id == R.id.nav_visualizar_agendamentos) {
                                 fragmentManager.beginTransaction().replace(R.id.conteudo,
                                         new VisualizarAgendamentoFragment()).commit();
-                            } else if (id == R.id.nav_mensagem) {
-                                fragmentManager.beginTransaction().replace(R.id.conteudo,
-                                        new MensagemFragment()).commit();
                             }
                         }
                     }
