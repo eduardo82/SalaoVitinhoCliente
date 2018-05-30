@@ -260,9 +260,6 @@ public class MainActivity extends AppCompatActivity
                             } else if (id == R.id.nav_visualizar_agendamentos) {
                                 fragmentManager.beginTransaction().replace(R.id.conteudo,
                                         new VisualizarAgendamentoFragment()).commit();
-                            } else if (id == R.id.nav_mensagem) {
-                                fragmentManager.beginTransaction().replace(R.id.conteudo,
-                                        new MensagemFragment()).commit();
                             }
                         }
                     }
