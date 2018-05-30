@@ -17,6 +17,7 @@ import java.lang.ref.WeakReference;
 import br.com.eduardo.salaovitinhocliente.R;
 import br.com.eduardo.salaovitinhocliente.constants.SalaoVitinhoConstants;
 import br.com.eduardo.salaovitinhocliente.formatter.BrPhoneNumberFormatter;
+import br.com.eduardo.salaovitinhocliente.model.Telefone;
 
 /**
  * Created by Eduardo on 04/12/2017.
@@ -55,9 +56,7 @@ public class SalaoVitinhoClienteUtils {
     public static void exibeDialogInformacoesUsuario(final Context context, boolean exibeSim, boolean exibeNao) {
         LayoutInflater inflater = LayoutInflater.from(context);
         final View view = inflater.inflate(R.layout.layout_dados_usuario, null);
-
         final EditText nome = view.findViewById(R.id.editTextNome);
-
         final EditText telephone = view.findViewById(R.id.editTextTelefone);
         BrPhoneNumberFormatter addLineNumberFormatter = new BrPhoneNumberFormatter(new WeakReference<>(telephone));
         telephone.addTextChangedListener(addLineNumberFormatter);
@@ -98,21 +97,27 @@ public class SalaoVitinhoClienteUtils {
                 @Override
                 public void onClick(View v) {
                     String nome = ((EditText) view.findViewById(R.id.editTextNome)).getText().toString();
-                    String telefone = ((EditText) view.findViewById(R.id.editTextTelefone)).getText().toString();
-
+                    String nroTelefone = ((EditText) view.findViewById(R.id.editTextTelefone)).getText().toString();
                     String nomePref = PreferencesUtils.getStringPrefsByKey(context, SalaoVitinhoConstants.PREF_NOME);
 
                     if (nomePref.length() > 3 || nome.length() > 3) {
                         PreferencesUtils.putStringPrefs(context, SalaoVitinhoConstants.PREF_NOME, nome);
                         ((EditText) view.findViewById(R.id.editTextNome)).setText(nome.length() > 3 ? nome : nomePref);
-                        if (telefone.length() > 0 && telefone.matches(".(31.)\\s9[7-9][0-9]{3}-[0-9]{4}")) {
+                        if (nroTelefone.length() > 0 && nroTelefone.matches(".(31.)\\s9[7-9][0-9]{3}-[0-9]{4}")) {
+                            Telefone telefone = new Telefone();
+                            telefone.setAutorizado(false);
+                            telefone.setNovo(true);
+                            telefone.setNumero(nroTelefone);
+                            telefone.setNome(nome.length() > 3 ? nome : nomePref);
+
                             PreferencesUtils.removePref(context, SalaoVitinhoConstants.PREF_TELEFONE);
-                            PreferencesUtils.putStringPrefs(context, SalaoVitinhoConstants.PREF_TELEFONE, telefone);
+                            PreferencesUtils.putStringPrefs(context, SalaoVitinhoConstants.PREF_TELEFONE, nroTelefone);
+                            FirebaseUtils.getReferenceChild(SalaoVitinhoConstants.NODE_FIREBASE_TELEFONES, nroTelefone).setValue(telefone);
                             dialog.dismiss();
                         }
                         else {
                             Toast.makeText(context, "O telefone deve ser válido e estar no formato (31) 99999-9999.",
-                                    Toast.LENGTH_SHORT).show();
+                                Toast.LENGTH_SHORT).show();
                         }
                     }
                     else {
